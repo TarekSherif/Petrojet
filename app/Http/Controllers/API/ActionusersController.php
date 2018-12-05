@@ -17,7 +17,9 @@ class ActionusersController extends Controller
         
               try
               {
-                  $SQL ="SELECT * FROM users  order by id";
+                  $SQL ="SELECT * FROM users 
+                    where role<>100  
+                    order by id";
                   $Data= DB::select($SQL);
                   $jTableResult['Result'] = "OK";
                   $jTableResult['Records'] =$Data;
