@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Alhendy | Login</title>
+    <title>@lang('messages.Pname') | Login</title>
 
     <meta name="description" content="ProUI is a Responsive Bootstrap Admin Template created by pixelcave and published on Themeforest.">
     <meta name="author" content="pixelcave">

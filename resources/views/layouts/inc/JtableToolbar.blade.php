@@ -19,8 +19,8 @@ toolbar: {
                          <table>`
                              + $(jtable).html() +
                          `</table>
-                     </body>
-                 </html>`;
+                     </body>`;
+                
                   newWindow.document.write(html);
                   newWindow.print();
                   e.preventDefault();

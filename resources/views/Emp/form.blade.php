@@ -3,7 +3,7 @@
     <label for='EName' class="col-md-4 col-form-label text-md-right"> @lang('messages.EName') </label>
     
     <div class="col-md-6">
-        <input id='EName' type="text" class="form-control{{ $errors->has('EName') ? ' is-invalid' : '' }}" name='EName' value="{{ old('EName') }}"   autofocus>
+        <input id='EName' type="text" class="form-control{{ $errors->has('EName') ? ' is-invalid' : '' }}" name='EName' value="{{old('EName',$emp->EName)}}"   autofocus>
     
         @if ($errors->has('EName'))
             <span class="invalid-feedback" role="alert">
@@ -18,7 +18,7 @@
         <label for='BDate' class="col-md-4 col-form-label text-md-right">@lang('messages.BDate') </label>
         
         <div class="col-md-6">
-            <input id='BDate' type='date' class="form-control{{ $errors->has('BDate') ? ' is-invalid' : '' }}" name='BDate'  >
+            <input id='BDate' type='date' class="form-control{{ $errors->has('BDate') ? ' is-invalid' : '' }}" name='BDate' value="{{old('BDate',$emp->BDate)}}"  >
         
             @if ($errors->has('BDate'))
                 <span class="invalid-feedback" role="alert">
@@ -34,11 +34,10 @@
         
             <div class="col-md-6">
                 <select id='Socialstatus'  class="form-control{{ $errors->has('Socialstatus') ? ' is-invalid' : '' }}" name='Socialstatus' >
-                    <option value="3" selected> --@lang('messages.select')  @lang('messages.Socialstatus')--</option>
-                    <option value="1">أعزب</option>
-                    <option value="2">متزوجل</option>
-                    <option value="3">مطلق </option>
-                    <option value="4">مترمل</option>
+                    <option  selected hidden disabled> --@lang('messages.select')  @lang('messages.Socialstatus')--</option>
+                    @foreach ($Socialstatus as $Socialstatu)
+                    <option value="{{$Socialstatu->SID}}" @if($emp->Socialstatus == $Socialstatu->SID) selected='selected' @endif>{{$Socialstatu->Title}}</option>
+                  @endforeach
                 </select>
                 @if ($errors->has('Socialstatus'))
                     <span class="invalid-feedback" role="alert">
@@ -56,7 +55,7 @@
             <label for='passportID' class="col-md-4 col-form-label text-md-right">@lang('messages.passportID') </label>
             
             <div class="col-md-6">
-                <input id='passportID' type="text" class="form-control{{ $errors->has('passportID') ? ' is-invalid' : '' }}" name='passportID' value="{{ old('passportID') }}"   autofocus>
+                <input id='passportID' type="text" class="form-control{{ $errors->has('passportID') ? ' is-invalid' : '' }}" name='passportID' value="{{old('passportID',$emp->passportID)}}"    autofocus>
             
                 @if ($errors->has('passportID'))
                     <span class="invalid-feedback" role="alert">
@@ -70,7 +69,7 @@
         <label for='passportEDate' class="col-md-4 col-form-label text-md-right">@lang('messages.passportEDate') </label>
         
         <div class="col-md-6">
-            <input id='passportEDate' type='date' class="form-control{{ $errors->has('passportEDate') ? ' is-invalid' : '' }}" name='passportEDate'  >
+            <input id='passportEDate' type='date' class="form-control{{ $errors->has('passportEDate') ? ' is-invalid' : '' }}" name='passportEDate' value="{{old('passportEDate',$emp->passportEDate)}}"   >
         
             @if ($errors->has('passportEDate'))
                 <span class="invalid-feedback" role="alert">
@@ -83,7 +82,7 @@
             <label for='FinancialNumber' class="col-md-4 col-form-label text-md-right">@lang('messages.FinancialNumber') </label>
             
             <div class="col-md-6">
-                <input id='FinancialNumber' type="number" class="form-control{{ $errors->has('FinancialNumber') ? ' is-invalid' : '' }}" name='FinancialNumber' value="{{ old('FinancialNumber') }}"  >
+                <input id='FinancialNumber' type="number" class="form-control{{ $errors->has('FinancialNumber') ? ' is-invalid' : '' }}" name='FinancialNumber' value="{{old('FinancialNumber',$emp->FinancialNumber)}}"     >
             
                 @if ($errors->has('FinancialNumber'))
                     <span class="invalid-feedback" role="alert">
@@ -97,7 +96,7 @@
     <label for='ResidencyNumber' class="col-md-4 col-form-label text-md-right">@lang('messages.ResidencyNumber') </label>
     
     <div class="col-md-6">
-        <input id='ResidencyNumber' type="number" class="form-control{{ $errors->has('ResidencyNumber') ? ' is-invalid' : '' }}" name='ResidencyNumber' value="{{ old('ResidencyNumber') }}"  >
+        <input id='ResidencyNumber' type="number" class="form-control{{ $errors->has('ResidencyNumber') ? ' is-invalid' : '' }}" name='ResidencyNumber'   value="{{old('ResidencyNumber',$emp->ResidencyNumber)}}"     >
     
         @if ($errors->has('ResidencyNumber'))
             <span class="invalid-feedback" role="alert">
@@ -146,9 +145,9 @@
     
         <div class="col-md-6">
             <select id='ActualJob'  class="form-control{{ $errors->has('ActualJob') ? ' is-invalid' : '' }}" name='ActualJob' >
-                <option value="3" selected> --@lang('messages.select')  @lang('messages.ActualJob')--</option>
+                <option selected hidden disabled> --@lang('messages.select')  @lang('messages.ActualJob')--</option>
                 @foreach ($Jobs as $Job)
-                  <option value="{{$Job->jID}}">{{$Job->jobTitle}}</option>
+                  <option value="{{$Job->jID}}"  @if($emp->ActualJob == $Job->jID) selected='selected' @endif>{{$Job->jobTitle}}</option>
                 @endforeach
             </select>
             @if ($errors->has('ActualJob'))
@@ -166,9 +165,9 @@
     
         <div class="col-md-6">
             <select id='ContractJob'  class="form-control{{ $errors->has('ContractJob') ? ' is-invalid' : '' }}" name='ContractJob' >
-                <option value="3" selected> --@lang('messages.select')  @lang('messages.ContractJob')--</option>
+                <option selected hidden disabled> --@lang('messages.select')  @lang('messages.ContractJob')--</option>
                 @foreach ($Jobs as $Job)
-                  <option value="{{$Job->jID}}">{{$Job->jobTitle}}</option>
+                  <option value="{{$Job->jID}}"  @if($emp->ContractJob == $Job->jID) selected='selected' @endif >{{$Job->jobTitle}}</option>
                 @endforeach
             </select>
             @if ($errors->has('ContractJob'))
@@ -188,9 +187,9 @@
     
         <div class="col-md-6">
             <select id='NID'  class="form-control{{ $errors->has('NID') ? ' is-invalid' : '' }}" name='NID' >
-                <option value="3" selected> --@lang('messages.select')  @lang('messages.NID')--</option>
+                <option selected hidden disabled> --@lang('messages.select')  @lang('messages.NID')--</option>
                 @foreach ($Nationalitys as $Nationality)
-                  <option value="{{$Nationality->NID}}">{{$Nationality->Nationality}}</option>
+                  <option value="{{$Nationality->NID}}"  @if($emp->NID == $Nationality->NID) selected='selected' @endif >{{$Nationality->Nationality}}</option>
                 @endforeach
             </select>
             @if ($errors->has('NID'))
@@ -206,9 +205,9 @@
     
         <div class="col-md-6">
             <select id='EID'  class="form-control{{ $errors->has('EID') ? ' is-invalid' : '' }}" name='EID' >
-                <option value="3" selected> --@lang('messages.select')  @lang('messages.EID')--</option>
+                <option selected hidden disabled> --@lang('messages.select')  @lang('messages.EID')--</option>
                 @foreach ($Educationals as $Educational)
-                  <option value="{{$Educational->EID}}">{{$Educational->Educational}}</option>
+                  <option value="{{$Educational->EID}}"  @if($emp->EID == $Educational->EID) selected='selected' @endif>{{$Educational->Educational}}</option>
                 @endforeach
             </select>
             @if ($errors->has('EID'))
@@ -224,9 +223,9 @@
     
         <div class="col-md-6">
             <select id='LicenseType'  class="form-control{{ $errors->has('LicenseType') ? ' is-invalid' : '' }}" name='LicenseType' >
-                <option value="3" selected> --@lang('messages.select')  @lang('messages.LicenseType')--</option>
+                <option selected hidden disabled> --@lang('messages.select')  @lang('messages.LicenseType')--</option>
                 @foreach ($LicenseTypes as $LicenseType)
-                  <option value="{{$LicenseType->LicenseID}}">{{$LicenseType->LicenseType}}</option>
+                  <option value="{{$LicenseType->LicenseID}}" @if($emp->LicenseType == $LicenseType->LicenseID) selected='selected' @endif>{{$LicenseType->LicenseType}}</option>
                 @endforeach
             </select>
             @if ($errors->has('LicenseType'))
@@ -242,7 +241,7 @@
         <label for='LicenseID' class="col-md-4 col-form-label text-md-right">@lang('messages.LicenseID') </label>
     
         <div class="col-md-6">
-            <input id='LicenseID' type="number" class="form-control{{ $errors->has('LicenseID') ? ' is-invalid' : '' }}" name='LicenseID' value="{{ old('LicenseID') }}"  >
+            <input id='LicenseID' type="number" class="form-control{{ $errors->has('LicenseID') ? ' is-invalid' : '' }}" name='LicenseID'    value="{{old('LicenseID',$emp->LicenseID)}}"    >
             @if ($errors->has('LicenseID'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('LicenseID') }}</strong>
@@ -257,7 +256,7 @@
         <label for='LicenseEDate' class="col-md-4 col-form-label text-md-right">@lang('messages.LicenseEDate') </label>
         
         <div class="col-md-6">
-            <input id='LicenseEDate' type='date' class="form-control{{ $errors->has('LicenseEDate') ? ' is-invalid' : '' }}" name='LicenseEDate'  >
+            <input id='LicenseEDate' type='date' class="form-control{{ $errors->has('LicenseEDate') ? ' is-invalid' : '' }}" name='LicenseEDate'  value="{{old('LicenseEDate',$emp->LicenseEDate)}}" >
         
             @if ($errors->has('LicenseEDate'))
                 <span class="invalid-feedback" role="alert">
@@ -272,9 +271,9 @@
         
             <div class="col-md-6">
                 <select id='TuvType'  class="form-control{{ $errors->has('TuvType') ? ' is-invalid' : '' }}" name='TuvType' >
-                    <option value="3" selected> --@lang('messages.select')  @lang('messages.TuvType')--</option>
+                    <option selected hidden disabled> --@lang('messages.select')  @lang('messages.TuvType')--</option>
                     @foreach ($TUVs as $TUV)
-                      <option value="{{$TUV->TID}}">{{$TUV->TUV}}</option>
+                      <option value="{{$TUV->TID}}"  @if($emp->TuvType == $TUV->TID) selected='selected' @endif>{{$TUV->TUV}}</option>
                     @endforeach
                 </select>
                 @if ($errors->has('TuvType'))
@@ -290,7 +289,7 @@
         <label for='TuvID' class="col-md-4 col-form-label text-md-right">@lang('messages.TuvID') </label>
     
         <div class="col-md-6">
-            <input id='TuvID' type="number" class="form-control{{ $errors->has('TuvID') ? ' is-invalid' : '' }}" name='TuvID' value="{{ old('TuvID') }}"  >
+            <input id='TuvID' type="number" class="form-control{{ $errors->has('TuvID') ? ' is-invalid' : '' }}" name='TuvID'  value="{{old('TuvID',$emp->TuvID)}}"    >
             @if ($errors->has('TuvID'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('TuvID') }}</strong>
@@ -305,7 +304,7 @@
             <label for='TuvEDate' class="col-md-4 col-form-label text-md-right">@lang('messages.TuvEDate') </label>
             
             <div class="col-md-6">
-                <input id='TuvEDate' type='date' class="form-control{{ $errors->has('TuvEDate') ? ' is-invalid' : '' }}" name='TuvEDate'  >
+                <input id='TuvEDate' type='date' class="form-control{{ $errors->has('TuvEDate') ? ' is-invalid' : '' }}" name='TuvEDate' value="{{old('TuvEDate',$emp->TuvEDate)}}"    >
             
                 @if ($errors->has('TuvEDate'))
                     <span class="invalid-feedback" role="alert">
@@ -316,6 +315,21 @@
             </div>
         
     
+            <div class="form-group row">
+                <label for='DSleave' class="col-md-4 col-form-label text-md-right">@lang('messages.DSleave') </label>
+                
+                <div class="col-md-6">
+                    <input id='DSleave' type='date' class="form-control{{ $errors->has('DSleave') ? ' is-invalid' : '' }}" name='DSleave'  >
+                
+                    @if ($errors->has('DSleave'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('DSleave') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                </div>
+    
+                
     <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-4">
                 <button type="submit" class="btn btn-primary">

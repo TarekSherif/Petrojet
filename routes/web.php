@@ -23,6 +23,8 @@ Route::get('ViewName', 'SettingController@ViewName');
 Route::get('Permission', 'SettingController@Permission');
 
 Route::resource('Emp','EmpController');
+Route::get('Absence', 'SettingController@Absence');
+
  
 
 Route::get('lang/{lang}',  function($lang)

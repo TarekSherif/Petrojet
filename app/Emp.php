@@ -8,5 +8,6 @@ class Emp extends Model
 {
     //
     protected $table = 'Emp';
-    protected $fillable = [  'EName', 'BDate', 'Socialstatus', 'passportID', 'passportEDate', 'FinancialNumber', 'ResidencyNumber', 'ExpiryDate', 'RenewalDate', 'ActualJob', 'ContractJob', 'TuvType', 'TuvID', 'TuvEDate', 'LicenseType', 'LicenseID', 'LicenseEDate', 'NID', 'EID'];
+    protected $fillable = [  'EName', 'BDate', 'Socialstatus', 'passportID', 'passportEDate', 'FinancialNumber', 'ResidencyNumber', 'ExpiryDate', 'RenewalDate', 'ActualJob', 'ContractJob', 'TuvType', 'TuvID', 'TuvEDate', 'LicenseType', 'LicenseID', 'LicenseEDate', 'NID', 'EID','DSleave'];
+    protected $primaryKey = 'EmpID';
 }

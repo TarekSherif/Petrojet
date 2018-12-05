@@ -1,9 +1,9 @@
 <!-- /.content-wrapper -->
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 2.4.0
+        <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2018 <a href="mailto:Eng.Tarek.Sherif@gmail.com">Tarek Sherif</a>.</strong> All rights reserved.
 </footer>
 
 <!-- Control Sidebar -->
@@ -20,24 +20,8 @@
         <!-- /.tab-pane -->
         <!-- Settings tab content -->
         <div class="tab-pane active" id="control-sidebar-settings-tab">
-            <form method="post">
-                <h3 class="control-sidebar-heading"> @lang("messages.GeneralSettings") </h3>
-
-                <div class="form-group">
-                    <label class="control-sidebar-subheading">
-              @lang("messages.ShowAllBranchs") 
-              <input type="checkbox" class="pull-right" id="ChkBranch" checked>
-            </label>
-                </div>
-                <div class="form-group ">
-                    <label>@lang("messages.Branchs") </label>
-                    <select class=" form-control " disabled id="selectBranch" name="Branch">
-                    <option  selected=selected value=0> @lang("messages.SelectBranch")</option>
-                </select>
-
-                </div>
-
-            </form>
+           
+            
         </div>
         <!-- /.tab-pane -->
     </div>
@@ -83,7 +67,40 @@
 
     $(function () {
 
-              
+      $('#top-search').autocomplete({
+           source: '{{url("/")}}/api/ListOfACEmp?_token={{ csrf_token() }}',
+           "position": { my: "center top", at: "center bottom"},
+           select: function (e, ui) {
+              window.open( "{{url("/")}}/Emp/"+ui.item.EmpID+"/edit", '_self');
+           }
+       }).data("autocomplete")._renderItem = function (ul, item) {
+      
+                  return $( "<li></li>" )
+                      .append(
+                        `<a >
+                          <div class="row" > 
+                            <div class="col-xs-6"> 
+                                  <strong> <i class="fa fa-address-card-o"></i>:</strong>`+item.EmpID+`
+                              </div>
+                              <div class="col-xs-6"> 
+                                    <strong><i class="fa fa-address-card-o"></i> :</strong>`+item.EName+`
+                              </div>
+                            <div class="col-xs-6"> 
+                                  <strong> <i class="fa fa-address-card-o"></i>:</strong>`+item.passportID+`
+                              </div>
+                              <div class="col-xs-6"> 
+                                    <strong><i class="fa  fa-address-card-o"></i> :</strong>`+item.ResidencyNumber+`
+                              </div>
+                       
+                            </div>
+                          </a>       ` )
+                      .appendTo( ul );
+                  };
+       
+   
+       
+   
+
 
   
       $('[data-toggle="push-menu"]').on('click', function (e) {

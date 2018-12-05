@@ -91,8 +91,9 @@ return [
     'FinancialNumber' => 'الرقم المالي' ,
     'Save'=>'حفظ',
     'select'=>'اختار',
-    'Emp.create'=> ' اضافة موظف'
+    'Emp.create'=> ' اضافة موظف',
 
-
+    'Absence'=>'الغياب',
+    'absenceDate'=>'تاريخ الغياب',
 
 ];

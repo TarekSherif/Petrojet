@@ -43,7 +43,7 @@ Route::post('RoleListoptions', 'API\ActionRoleController@RoleListoptions');
 //========================================================================
 // ActionViewNameController-urls  
 //========================================================================
-// Route::get('ListOfACViewName', 'API\ActionViewNameController@ListOfACViewName');
+ 
 
 Route::post('ListOfViewNames', 'API\ActionViewNameController@ListOfViewNames');
 Route::post('CreateViewName', 'API\ActionViewNameController@CreateViewName');
@@ -125,3 +125,16 @@ Route::post('DeleteEducational', 'API\ActionEducationalController@DeleteEducatio
 //=========================================================================
 Route::post('EducationalListoptions', 'API\ActionEducationalController@EducationalListoptions');
 
+
+
+//========================================================================
+// ActionAbsenceController-urls  
+//========================================================================
+Route::post('ListOfAbsences', 'API\ActionAbsenceController@ListOfAbsences');
+Route::post('CreateAbsence', 'API\ActionAbsenceController@CreateAbsence');
+Route::post('UpdateAbsence', 'API\ActionAbsenceController@UpdateAbsence');
+Route::post('DeleteAbsence', 'API\ActionAbsenceController@DeleteAbsence');
+
+
+
+Route::get('ListOfACEmp', 'API\ActionEmpController@ListOfACEmp');

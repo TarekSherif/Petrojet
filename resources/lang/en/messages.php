@@ -83,5 +83,8 @@ return [
     'FinancialNumber' => 'FinancialNumber' ,
     'Save'=>'Save',
     'select'=>'select',
-     'Emp.create'=> ' create Emp'
+     'Emp.create'=> ' create Emp',
+
+     'Absence'=>'Absence',
+     'absenceDate'=>'Absence Date',
 ];

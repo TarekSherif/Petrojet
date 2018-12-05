@@ -59,7 +59,10 @@ class SettingController extends Controller
     {
         return view('Permission');
     }
+    public function Absence()
+    {
+        return view('Absence');
+    }
     
-
 
 }

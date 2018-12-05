@@ -25,14 +25,7 @@ class EmpController extends Controller
      */
     public function create()
     {
-        $Data = array(
-           'Jobs'=> DB::select('select * from jobTitle order by SOrder  '),
-           'Nationalitys'=> DB::select('select * from Nationality order by SOrder  '),
-           'LicenseTypes'=> DB::select('select * from LicenseType order by SOrder '),
-           'Educationals'=> DB::select('select * from Educational order by SOrder '),
-           'TUVs'=> DB::select('select * from TUV order by SOrder ')
-
-        );
+        $Data =$this->GetLookUpData();
        
         return view("Emp.create",$Data);
     }
@@ -82,10 +75,30 @@ class EmpController extends Controller
      * @param  \App\Emp  $emp
      * @return \Illuminate\Http\Response
      */
-    public function edit(Emp $emp)
+    public function edit(  $id)
     {
-        //
-    }
+        $Data =$this->GetLookUpData();
+        $Data['emp']= Emp::find( $id) ;
+
+        return view("Emp.edit",$Data);
+    //
+ }
+
+ private  function GetLookUpData()
+ {
+     $emp =new Emp();
+    return array(
+        'emp'=> $emp,
+        'Jobs'=> DB::select('select * from jobTitle order by SOrder  '),
+        'Nationalitys'=> DB::select('select * from Nationality order by SOrder  '),
+        'LicenseTypes'=> DB::select('select * from LicenseType order by SOrder '),
+        'Educationals'=> DB::select('select * from Educational order by SOrder '),
+        'TUVs'=> DB::select('select * from TUV order by SOrder '),
+        'Socialstatus'=>DB::select('select * from Socialstatu order by SOrder '),
+      
+
+     );
+ }
 
     /**
      * Update the specified resource in storage.
@@ -97,6 +110,10 @@ class EmpController extends Controller
     public function update(Request $request, Emp $emp)
     {
         //
+        $data = $request->only($emp->getFillable());
+        $emp->fill($data)->save();
+        
+        return redirect("Emp/$emp->EmpID/edit")->with('success', 'تم  الحفظ بنجاح');
     }
 
     /**

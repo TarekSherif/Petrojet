@@ -58,9 +58,16 @@
                                 @lang('messages.Emp.create')
                         </span>
                     </a>
-
-
             </li>
+            <li class="{{ $view_name == "Absence" ? "active" : "" }} ">
+                <a href="{{url('/')}}/Absence" >
+                        <i class="fa fa-plus sidebar-nav-icon"></i>
+                        <span class="sidebar-nav-mini-hide">
+                                @lang('messages.Absence')
+                        </span>
+                    </a>
+            </li>
+            
             <li class="treeview ">
                 <a href="#">
             <i class="fa fa-cog"></i>
