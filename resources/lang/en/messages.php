@@ -87,4 +87,5 @@ return [
 
      'Absence'=>'Absence',
      'absenceDate'=>'Absence Date',
+     'DSleave'=>'entitlement to leave',
 ];
