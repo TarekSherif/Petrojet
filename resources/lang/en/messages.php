@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Pname'=>'Petrojet',
+    'Pname'=>'alhendy',
     'MName'=>'Human resources',
     //menu
      
@@ -88,4 +88,6 @@ return [
      'Absence'=>'Absence',
      'absenceDate'=>'Absence Date',
      'DSleave'=>'entitlement to leave',
+
+     
 ];

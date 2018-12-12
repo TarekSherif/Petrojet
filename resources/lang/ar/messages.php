@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Pname'=>'بتروجيت',
+    'Pname'=>'الفهد الهندي',
     'MName'=>'موارد بشرية',
     //menu Pages
     

@@ -8,7 +8,9 @@
     
             <h1>
                 {{-- <img src="{{asset('Template/img/icon180.png')}}" style="width:50;height:50;" alt="Logo"> --}}
-                <span class="sidebar-nav-mini-hide"><strong>Petrojet</strong></span>
+                <span class="sidebar-nav-mini-hide"><strong>
+                @lang('messages.Pname')    
+                </strong></span>
                 <br><small>Please <strong>Login</strong> </small>
             </h1>
         </div>
