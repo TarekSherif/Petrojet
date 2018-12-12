@@ -81,6 +81,29 @@ Route::post('jobTitleListoptions', 'API\ActionjobTitleController@jobTitleListopt
 
 
 
+//========================================================================
+// ActionContactController-urls  
+//========================================================================
+Route::post('ListOfContacts', 'API\ActionContactController@ListOfContacts');
+Route::post('CreateContact', 'API\ActionContactController@CreateContact');
+Route::post('UpdateContact', 'API\ActionContactController@UpdateContact');
+Route::post('DeleteContact', 'API\ActionContactController@DeleteContact');
+//=========================================================================
+Route::post('ContactListoptions', 'API\ActionContactController@ContactListoptions');
+
+
+
+//========================================================================
+// ActionAttachmentController-urls  
+//========================================================================
+Route::post('ListOfAttachments', 'API\ActionAttachmentController@ListOfAttachments');
+Route::post('CreateAttachment', 'API\ActionAttachmentController@CreateAttachment');
+Route::post('UpdateAttachment', 'API\ActionAttachmentController@UpdateAttachment');
+Route::post('DeleteAttachment', 'API\ActionAttachmentController@DeleteAttachment');
+//=========================================================================
+Route::post('AttachmentListoptions', 'API\ActionAttachmentController@AttachmentListoptions');
+
+
        
 //========================================================================
 // ActionLicenseTypeController-urls  

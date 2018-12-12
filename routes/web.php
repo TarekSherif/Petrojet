@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('Contact', 'SettingController@Contact');
+Route::get('Attachment', 'SettingController@Attachment');
 
 Route::get('Educational', 'SettingController@Educational');
 Route::get('Nationality', 'SettingController@Nationality');

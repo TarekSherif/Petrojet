@@ -28,6 +28,15 @@ class SettingController extends Controller
         return view('LicenseType');
     }
      
+    public function Contact()
+    {
+        return view('Contact');
+    }
+
+    public function Attachment()
+    {
+        return view('Attachment');
+    }
     public function Nationality()
     {
         return view('Nationality');
